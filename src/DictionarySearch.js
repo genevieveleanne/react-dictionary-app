@@ -6,13 +6,19 @@ import "./DictionarySearch.css";
 export default function DictionarySearch() {
   let [word, setWord] = useState("");
 
-  function searchForWord(event) {
-    event.preventDefault();
-    alert(`Searching for definition of ${word}`);
-  }
-
   function handleWordChange(event) {
     setWord(event.target.value);
+  }
+
+  function searchForWord(event) {
+    event.preventDefault();
+
+    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleResponse(response) {
+    console.log(response.data[0]);
   }
 
   return (
