@@ -8,9 +8,7 @@ export default function SearchResults(props) {
     return (
       <div className="SearchResults">
         <h2>{props.results.word}</h2>
-        <p>
-          <Phonetics phonetics={props.results.phonetics[0]} />
-        </p>
+        <Phonetics phonetics={props.results.phonetics[0]} />
         {props.results.meanings.map(function (meaning, index) {
           return (
             <div key={index}>
