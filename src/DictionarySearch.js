@@ -4,17 +4,26 @@ import SearchResults from "./SearchResults";
 
 import "./DictionarySearch.css";
 
-export default function DictionarySearch() {
-  let [word, setWord] = useState("");
+export default function DictionarySearch(props) {
+  let [word, setWord] = useState(props.wordOnLoad);
   let [results, setResults] = useState(null);
+  let [loaded, setLoaded] = useState(false);
+
+  function onLoad() {
+    setLoaded(true);
+    search();
+  }
 
   function handleWordChange(event) {
     setWord(event.target.value);
   }
 
-  function searchForWord(event) {
+  function handleSubmit(event) {
     event.preventDefault();
+    search();
+  }
 
+  function search() {
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
     axios.get(apiUrl).then(handleResponse);
   }
@@ -23,17 +32,22 @@ export default function DictionarySearch() {
     setResults(response.data[0]);
   }
 
-  return (
-    <div className="DictionarySearch">
-      <form onSubmit={searchForWord}>
-        <input
-          type="search"
-          placeholder="Enter a Word"
-          onChange={handleWordChange}
-        />
-        <input type="submit" value="Find" />
-      </form>
-      <SearchResults results={results} />
-    </div>
-  );
+  if (loaded) {
+    return (
+      <div className="DictionarySearch">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="search"
+            placeholder="Enter a Word"
+            onChange={handleWordChange}
+          />
+          <input type="submit" value="Find" />
+        </form>
+        <SearchResults results={results} />
+      </div>
+    );
+  } else {
+    onLoad();
+    return null;
+  }
 }

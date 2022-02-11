@@ -6,7 +6,7 @@ export default function App() {
     <div className="App">
       <div className="container">
         <h1>Dictionary</h1>
-        <DictionarySearch />
+        <DictionarySearch wordOnLoad="sunrise" />
         <footer>
           <small>
             This app was built by Genevieve Leanne Dominguez. It is open-sourced
