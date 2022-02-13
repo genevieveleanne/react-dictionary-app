@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import SearchResults from "./SearchResults";
+import Photos from "./Photos";
 
 import "./DictionarySearch.css";
 
@@ -8,6 +9,7 @@ export default function DictionarySearch(props) {
   let [word, setWord] = useState(props.wordOnLoad);
   let [results, setResults] = useState(null);
   let [loaded, setLoaded] = useState(false);
+  let [images, setImages] = useState(null);
 
   function onLoad() {
     setLoaded(true);
@@ -25,11 +27,21 @@ export default function DictionarySearch(props) {
 
   function search() {
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
-    axios.get(apiUrl).then(handleResponse);
+    axios.get(apiUrl).then(handleDictionaryResponse);
+
+    let pexelsApiKey =
+      "563492ad6f917000010000010ca893f3bca44d4cad4f1051dccde52e";
+    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${word}&per_page=6`;
+    let headers = { Authorization: `Bearer ${pexelsApiKey}` };
+    axios.get(pexelsApiUrl, { headers: headers }).then(handlePexelsResponse);
   }
 
-  function handleResponse(response) {
+  function handleDictionaryResponse(response) {
     setResults(response.data[0]);
+  }
+
+  function handlePexelsResponse(response) {
+    setImages(response.data.photos);
   }
 
   if (loaded) {
@@ -46,6 +58,7 @@ export default function DictionarySearch(props) {
           <input className="searchButton" type="submit" value="Find" />
         </form>
         <SearchResults results={results} />
+        <Photos images={images} />
       </section>
     );
   } else {
