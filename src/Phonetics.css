@@ -1,0 +1,8 @@
+.Phonetics a {
+  color: #22313f;
+  font-size: 18px;
+}
+
+.Phonetics a:hover {
+  color: lightcoral;
+}

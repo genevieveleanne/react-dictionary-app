@@ -34,17 +34,19 @@ export default function DictionarySearch(props) {
 
   if (loaded) {
     return (
-      <div className="DictionarySearch">
+      <section className="DictionarySearch">
+        <h2>Learn a new word today!</h2>
         <form onSubmit={handleSubmit}>
           <input
+            className="searchBar"
             type="search"
-            placeholder="Enter a Word"
+            placeholder="Suggested words: sunset, love, ocean, shine..."
             onChange={handleWordChange}
           />
-          <input type="submit" value="Find" />
+          <input className="searchButton" type="submit" value="Find" />
         </form>
         <SearchResults results={results} />
-      </div>
+      </section>
     );
   } else {
     onLoad();

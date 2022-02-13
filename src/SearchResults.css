@@ -1,0 +1,15 @@
+.SearchResults .wordAndPronunciation {
+  display: block;
+  background-color: #feffdf;
+  padding: 20px;
+  margin: 15px auto;
+  border-radius: 50px;
+  width: 25%;
+  text-align: center;
+}
+
+.SearchResults .wordAndPronunciation h3 {
+  font-size: 33px;
+  color: darkblue;
+  text-transform: capitalize;
+}

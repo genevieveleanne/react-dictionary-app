@@ -1,0 +1,19 @@
+.Meanings {
+  display: block;
+  background-color: #feffdf;
+  padding: 25px;
+  margin: 20px auto;
+  border-radius: 50px;
+  width: 75%;
+  color: #22313f;
+}
+
+.Meanings h4 {
+  font-size: 30px;
+  color: darkblue;
+}
+
+.Meanings p {
+  font-size: 18px;
+  line-height: 28px;
+}
