@@ -40,7 +40,7 @@ export default function DictionarySearch(props) {
           <input
             className="searchBar"
             type="search"
-            placeholder="Suggested words: sunset, love, ocean, shine..."
+            placeholder="Suggested words: song, love, ocean, shine..."
             onChange={handleWordChange}
           />
           <input className="searchButton" type="submit" value="Find" />
