@@ -18,3 +18,9 @@
   font-size: 18px;
   line-height: 28px;
 }
+
+@media (max-width: 420px) {
+  .Meanings {
+    width: 100%;
+  }
+}

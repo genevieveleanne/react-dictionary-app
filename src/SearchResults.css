@@ -14,3 +14,9 @@
   color: darkblue;
   text-transform: capitalize;
 }
+
+@media (max-width: 420px) {
+  .SearchResults .wordAndPronunciation {
+    width: 60%;
+  }
+}

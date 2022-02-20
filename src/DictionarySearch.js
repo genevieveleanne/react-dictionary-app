@@ -52,10 +52,9 @@ export default function DictionarySearch(props) {
           <input
             className="searchBar"
             type="search"
-            placeholder="Suggested words: song, love, ocean, shine..."
+            placeholder="Suggested words: love, ocean, shine..."
             onChange={handleWordChange}
           />
-          <input className="searchButton" type="submit" value="Find" />
         </form>
         <SearchResults results={results} />
         <Photos images={images} />
